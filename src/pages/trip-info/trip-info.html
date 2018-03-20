@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Information</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form (ngSubmit)="formSubmit()">
+    <input name="id" type="hidden">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Trip name</ion-label>
+        <ion-input name="name" type="text" [(ngModel)]="trip.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Phone</ion-label>
+        <ion-input name="phone" type="text" [(ngModel)]="trip.phone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Description</ion-label>
+        <ion-textarea name="description" [(ngModel)]="trip.description"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <button ion-button type="submit" block>SAVE</button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

@@ -1,0 +1,11 @@
+page-login {
+    .Aligner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%
+    }
+    .Aligner-item {
+         max-width: 500px;
+    }
+}

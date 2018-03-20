@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Trips</ion-title>
+    
+    <ion-buttons end (click)="signOut()">
+      <button ion-button>SIGN OUT</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let trip of trips | async" (click)="presentActionSheet(trip)">
+      <h2>{{trip.name}}</h2>
+
+    </ion-item>
+  </ion-list>
+  <ion-fab right bottom>
+    <button (click)="showAddPrompt()" ion-fab><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

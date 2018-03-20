@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Edit</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input name="name" type="text" [(ngModel)]="place.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-textarea rows="4" name="description" [(ngModel)]="place.description"></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-5>
+        <ion-item>
+          <ion-label floating>Latitude</ion-label>
+          <ion-input step="any" name="lat" type="number" [(ngModel)]="place.geoLocation.latitude"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-5>
+        <ion-item>
+          <ion-label floating>Longitude</ion-label>
+          <ion-input step="any" name="lon" type="number" [(ngModel)]="place.geoLocation.longitude"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-2>
+        <button (click)="go()" ion-button block>Go</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+    <ion-item>
+      <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="15" (mapClick)="mapClicked($event)">
+        <sebm-google-map-marker [latitude]="place.geoLocation.latitude" [longitude]="place.geoLocation.longitude"></sebm-google-map-marker>
+      </sebm-google-map>
+    </ion-item>
+    <ion-item>
+      <button ion-button (click)="imageInput.click()">Add Photo</button>
+      <input #imageInput style="display:none" (change)="addImage($event)" type="file" accept="image/*" multiple/>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 *ngFor="let img of imgs; let i = index">
+            <ion-fab top right> 
+              <button (click)="removeImg(i)" ion-fab mini color="danger"><ion-icon name="close"></ion-icon></button>
+            </ion-fab>
+            <img class="shadow" src="{{img.dataUrl}}">
+            </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    
+    <ion-item style="text-align: right">
+      <button ion-button (click)="update()" block>DONE EDITING</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

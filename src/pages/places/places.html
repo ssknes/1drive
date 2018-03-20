@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Attaction and Activity</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-grid class="card-background-page">
+    <ion-row>
+      <ion-col *ngFor="let place of places" col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+        <ion-card>
+          <ion-fab top right>
+              <button (click)="remove(place.$key)" ion-fab mini color="danger"><ion-icon name="close"></ion-icon></button>
+            </ion-fab>
+          <div class="imgContainer">
+            <img *ngIf="place.images" src="{{place.images[0]}}" />
+            <div *ngIf="!place.images" class="cardImg"></div>
+            <div class="card-title">{{place.name}}</div>
+          </div>
+          <ion-row>
+            <ion-col>
+              <button (click)="openPlaceEditor(place.$key)" ion-button icon-left clear small><div>Edit</div></button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab right bottom>
+    <button ion-fab><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button (click)="openExistingAdder()" ion-button round>EXISTING</button>
+      <button (click)="openAddNewPlace()" ion-button round>NEW</button>
+      
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

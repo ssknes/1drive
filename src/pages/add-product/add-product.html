@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input name="name" type="text" [(ngModel)]="product.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-textarea rows="4" name="description" [(ngModel)]="product.description"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <button ion-button (click)="imageInput.click()">Add Photo</button>
+      <input #imageInput style="display:none" (change)="addImage($event)" type="file" accept="image/*" multiple/>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 *ngFor="let img of imgs; let i = index">
+            <ion-fab top right>
+              <button (click)="removeImg(i)" ion-fab mini color="danger"><ion-icon name="close"></ion-icon></button>
+            </ion-fab>
+            <img class="shadow" src="{{img.dataUrl}}">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item style="text-align: right">
+      <button ion-button (click)="submit()" block>Submit</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

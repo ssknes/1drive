@@ -1,0 +1,22 @@
+<ion-content>
+  <div class="Aligner">
+    <div class="Aligner-item">
+      <form (ngSubmit)="signIn()">
+        <ion-list>
+          <ion-item>
+            <ion-label floating>Username</ion-label>
+            <ion-input type="text" [(ngModel)]="user.email" required name="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password" [(ngModel)]="user.password" required name="password"></ion-input>
+          </ion-item>
+        </ion-list>
+        <div padding>
+          <button type="submit" ion-button color="primary" block>Sign In</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</ion-content>
